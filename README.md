@@ -1,4 +1,55 @@
 Docker image based on Debian jessie, with nginx 1.6 and php 7.1.2.
 
 Modules included in PHP:
-- 
+    - bcmath
+    - bz2
+    - calendar
+    - Core
+    - ctype
+    - curl
+    - date
+    - dom
+    - exif
+    - fileinfo
+    - filter
+    - ftp
+    - gd
+    - gettext
+    - hash
+    - iconv
+    - imap
+    - json
+    - libxml
+    - mbstring
+    - mcrypt
+    - mysqli
+    - mysqlnd
+    - openssl
+    - pcntl
+    - pcre
+    - PDO
+    - pdo_mysql
+    - pdo_pgsql
+    - pdo_sqlite
+    - pgsql
+    - Phar
+    - posix
+    - Reflection
+    - session
+    - SimpleXML
+    - soap
+    - sockets
+    - SPL
+    - sqlite3
+    - standard
+    - sysvsem
+    - sysvshm
+    - tokenizer
+    - xml
+    - xmlreader
+    - xmlrpc
+    - xmlwriter
+    - xsl
+    - zip
+    - zlib
+    
