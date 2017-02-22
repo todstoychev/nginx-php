@@ -83,7 +83,8 @@ RUN ./buildconf --force \
     --enable-opcache \
     --enable-fpm \
 && make \
-&& make install clean
+&& make install clean && \
+rm -rf php-7.1.2
 
 RUN ln -s /opt/php-7.1/bin/* /usr/bin && ln -s /opt/php-7.1/sbin/* /usr/sbin
 
@@ -96,7 +97,9 @@ RUN wget https://github.com/phpredis/phpredis/archive/php7.zip -O phpredis.zip \
 && phpize \
 && ./configure \
 && make \
-&& make install
+&& make install && \
+rm phpredis.zip && \
+rm -rf phpredis
 
 # Uninstall the unecessary stuff
 RUN apt-get autoremove -y
