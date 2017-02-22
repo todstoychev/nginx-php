@@ -111,6 +111,7 @@ RUN mkdir /var/log/php
 WORKDIR /app
 
 RUN echo '<?php phpinfo();' > index.php
+EXPOSE 80 443
 
 CMD ["/usr/bin/supervisord"]
 
