@@ -109,6 +109,8 @@ ADD resources/default /etc/nginx/sites-available/default
 ADD resources/php-fpm.conf /opt/php-7.1/etc/php-fpm.conf
 ADD resources/www.conf /opt/php-7.1/etc/php-fpm.d/www.conf
 
+RUN rm -R php-7.1.2  phpredis  phpredis.zip
+
 RUN mkdir /var/log/php
 
 WORKDIR /app
