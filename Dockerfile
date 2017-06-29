@@ -8,7 +8,7 @@ WORKDIR /root
 ADD http://be2.php.net/get/php-7.1.2.tar.gz/from/this/mirror php-7.1.2.tar.gz
 RUN tar -xvzf php-7.1.2.tar.gz && rm php-7.1.2.tar.gz
 WORKDIR /root/php-7.1.2
-RUN apt-get install build-essential \
+RUN apt-get update && apt-get install build-essential \
 libfcgi-dev \
 libfcgi0ldbl \
 libjpeg62-turbo-dbg \
@@ -92,14 +92,14 @@ RUN ln -s /opt/php-7.1/bin/* /usr/bin && ln -s /opt/php-7.1/sbin/* /usr/sbin
 WORKDIR /root
 RUN wget https://github.com/phpredis/phpredis/archive/php7.zip -O phpredis.zip \
 && unzip -o phpredis.zip \
+&& rm phpredis.zip \
 && mv phpredis-* phpredis \
 && cd phpredis \
 && phpize \
 && ./configure \
 && make \
-&& make install && \
-rm phpredis.zip && \
-rm -rf phpredis
+&& make install \
+&& rm -rf phpredis
 
 # Uninstall the unecessary stuff
 RUN apt-get autoremove -y
@@ -109,8 +109,7 @@ ADD resources/default /etc/nginx/sites-available/default
 ADD resources/php-fpm.conf /opt/php-7.1/etc/php-fpm.conf
 ADD resources/www.conf /opt/php-7.1/etc/php-fpm.d/www.conf
 
-RUN rm -R php-7.1.2  phpredis  phpredis.zip
-
+RUN rm -rf /root/php-7.1.2 /root/phpredis
 RUN mkdir /var/log/php
 
 WORKDIR /app
